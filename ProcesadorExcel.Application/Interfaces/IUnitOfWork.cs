@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ProcesadorExcel.Application.Interfaces
+{
+    public interface IUnitOfWork : IDisposable
+    {
+        IRepository<T> GetRepository<T>() where T : class;
+        Task<int> SaveChangesAsync();
+        Task BeginTransactionAsync();
+        Task CommitAsync();
+        Task RollbackAsync();
+    }
+}

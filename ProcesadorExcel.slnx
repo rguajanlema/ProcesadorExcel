@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ProcesadorExcel.Application/ProcesadorExcel.Application.csproj" />
+  <Project Path="ProcesadorExcel.Domain/ProcesadorExcel.Domain.csproj" />
+  <Project Path="ProcesadorExcel.Infrastructure/ProcesadorExcel.Infrastructure.csproj" />
+  <Project Path="ProcesadorExcel/ProcesadorExcel.csproj" />
+</Solution>
