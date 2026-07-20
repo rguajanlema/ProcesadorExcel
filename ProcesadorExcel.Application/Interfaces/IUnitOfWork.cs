@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProcesadorExcel.Application.Interfaces
+﻿namespace ProcesadorExcel.Application.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {

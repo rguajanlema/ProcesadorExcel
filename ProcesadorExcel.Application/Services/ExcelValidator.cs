@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ExcelDataReader;
 using ProcesadorExcel.Application.Interfaces;
-using System.Data;
-using System.ComponentModel.DataAnnotations;
+using ProcesadorExcel.Application.Models;
 
 namespace ProcesadorExcel.Application.Services
 {

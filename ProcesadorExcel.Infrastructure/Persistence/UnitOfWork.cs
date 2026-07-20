@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using ProcesadorExcel.Application.Interfaces;
 
 namespace ProcesadorExcel.Infrastructure.Persistence
@@ -9,10 +8,10 @@ namespace ProcesadorExcel.Infrastructure.Persistence
 
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
-        private IDbContextTransaction _transaction;
+        private readonly AppDbContext _context;
+        private IDbContextTransaction? _transaction;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(AppDbContext context)
         {
             _context = context;
         }
@@ -29,12 +28,14 @@ namespace ProcesadorExcel.Infrastructure.Persistence
 
         public async Task CommitAsync()
         {
-            await _transaction.CommitAsync();
+            if (_transaction != null)
+                await _transaction.CommitAsync();
         }
 
         public async Task RollbackAsync()
         {
-            await _transaction.RollbackAsync();
+            if (_transaction != null)
+                await _transaction.RollbackAsync();
         }
 
         public async Task<int> SaveChangesAsync()
@@ -44,7 +45,6 @@ namespace ProcesadorExcel.Infrastructure.Persistence
 
         public void Dispose()
         {
-            _context.Dispose();
             _transaction?.Dispose();
         }
     }

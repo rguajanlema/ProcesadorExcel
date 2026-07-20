@@ -1,8 +1,7 @@
 ﻿using ProcesadorExcel.Application.Interfaces;
 using ProcesadorExcel.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ExcelDataReader;
+using ProcesadorExcel.Application.Exceptions;
 
 namespace ProcesadorExcel.Application.Services
 {
@@ -21,7 +20,8 @@ namespace ProcesadorExcel.Application.Services
         {
             // 1. Validar
             var validation = _validator.ValidateStructure(filePath, new[] { "Id", "Nombre", "Valor" });
-            if (!validation.IsValid) throw new Exception(validation.ErrorMessage);
+            if (!validation.IsValid)
+                throw new ExcelValidationException(validation.ErrorMessage ?? "El archivo no tiene una estructura válida.");
 
             // 2. Transacción
             await _unitOfWork.BeginTransactionAsync();

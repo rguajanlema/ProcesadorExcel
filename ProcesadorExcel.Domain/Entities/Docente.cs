@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProcesadorExcel.Domain.Entities
+﻿namespace ProcesadorExcel.Domain.Entities
 {
     public sealed class Docente
     {
